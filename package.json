@@ -1,0 +1,25 @@
+{
+  "name": "rube-schema",
+  "version": "0.0.1",
+  "description": "composable object schemas powered by Rube",
+  "keywords": [
+    "schema",
+    "object",
+    "rube"
+  ],
+  "author": "Matthew Mueller <matt@lapwinglabs.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lapwinglabs/rube-schema.git"
+  },
+  "dependencies": {
+    "batch": "^0.5.1",
+    "delegates": "^0.1.0",
+    "rube": "0.0.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "index"
+}
