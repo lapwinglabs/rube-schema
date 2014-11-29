@@ -9,6 +9,6 @@
   ],
   "dependencies": {
     "tj/batch": "^0.5.1",
-    "lapwinglabs/rube": "0.0.1"
+    "lapwinglabs/rube": "0.0.x"
   }
 }
