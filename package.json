@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "batch": "^0.5.1",
-    "delegates": "^0.1.0",
     "rube": "0.0.1"
   },
   "devDependencies": {

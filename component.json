@@ -1,0 +1,14 @@
+{
+  "name": "rube-schema",
+  "version": "0.0.1",
+  "description": "composable object schemas powered by Rube",
+  "keywords": [
+    "schema",
+    "object",
+    "rube"
+  ],
+  "dependencies": {
+    "tj/batch": "^0.5.1",
+    "lapwinglabs/rube": "0.0.1"
+  }
+}
