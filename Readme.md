@@ -12,25 +12,28 @@ npm install rube-schema
 ## Usage
 
 ```js
-var schema = Schema()
-  .attr('email')
-    .format(/^(\s|\s)$/g, '')
-    .type(String)
-  .attr('phone')
-    .format(/[^\d]+/g, '')
-    .cast(String, Number)
-
-// validate against `obj`
-schema.validate(obj, function(errors, values) {
-  errors // when errors, key is `attr`, value is `error`
-  values // when no errors, values is transformed `obj` values
+var schema = Schema({
+  name: rube().type(String),
+  email: rube().assert(/@/).type(String),
+  age: rube().cast(Number).type(Number)
 });
+
+schema({
+  name: 'matt',
+  email: 'matt@lapwinglabs.com',
+  age: '25'
+}, function(err, v) {
+  assert(!err);
+  assert('matt' == v.name);
+  assert('matt@lapwinglabs.com' == v.email);
+  assert(25 === v.age);
+  done();
+})
 ```
 
 ## TODO
 
 * Docs
-* Tests
 
 ## License
 

@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "batch": "^0.5.1",
-    "rube": "0.0.1"
+    "mocha": "^2.0.1",
+    "rube": "0.x"
   },
   "devDependencies": {
     "mocha": "*",
