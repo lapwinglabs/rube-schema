@@ -54,19 +54,16 @@ function Schema(attrs) {
 Schema.prototype.attr = function(key, rube) {
   if (!key) {
     return this._attrs;
-  } else if ('object' == typeof key) {
-    this._attrs = extend(this._attrs, key)
-  } else if (key.name == 'schema') {
-    this._attrs = extend(this._attrs, key._attrs);
+  } else if ('schema' == key.name || 'object' == typeof key) {
+    this._attrs = extend(this._attrs, key._attrs || key)
+    return this;
   } else if (rube) {
-    this._attrs[key] = rube;
+    if (!this._attrs[key]) this._attrs[key] = Rube();
+    this._attrs[key].use(rube);
+    return this;
   } else {
-    var rube = this._attrs[key] = Rube();
-    rube.attr = this.attr.bind(this);
-    return rube;
+    return this._attrs[key] || (this._attrs[key] = Rube());
   }
-
-  return this;
 };
 
 /**
