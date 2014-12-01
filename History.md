@@ -1,4 +1,10 @@
 
+0.1.1 / 2014-11-30
+==================
+
+  * make API more chainable.
+  * support composing schemes.
+
 0.1.0 / 2014-11-30
 ==================
 

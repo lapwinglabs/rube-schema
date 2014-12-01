@@ -12,11 +12,9 @@ npm install rube-schema
 ## Usage
 
 ```js
-var schema = Schema({
-  name: rube().type(String),
-  email: rube().assert(/@/).type(String),
-  age: rube().cast(Number).type(Number)
-});
+schema.attr('name').type(String)
+      .attr('email').type(String)
+      .attr('age').cast(Number).type(Number);
 
 schema({
   name: 'matt',
