@@ -9,6 +9,7 @@
   ],
   "dependencies": {
     "tj/batch": "^0.5.1",
-    "lapwinglabs/rube": "0.0.x"
+    "lapwinglabs/rube": "0.0.x",
+    "matthewmueller/extend.js": "0.0.x"
   }
 }
