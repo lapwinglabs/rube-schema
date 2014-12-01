@@ -1,6 +1,6 @@
 {
   "name": "rube-schema",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "composable object schemas powered by Rube",
   "keywords": [
     "schema",
