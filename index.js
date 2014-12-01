@@ -2,7 +2,7 @@
  * Module Dependencies
  */
 
-var Attribute = require('./lib/attribute.js');
+var extend = require('extend.js');
 var Batch = require('batch');
 var Rube = require('rube');
 var keys = Object.keys;
@@ -25,7 +25,7 @@ function Schema(attrs) {
   attrs = attrs || {};
 
   function schema(obj, fn) {
-    schema.validate(obj, fn);
+    validate(obj, schema._attrs, fn);
     return schema;
   }
 
@@ -38,7 +38,7 @@ function Schema(attrs) {
 
   // add the attributes
   for (var attr in attrs) {
-    schema.key(attr, attrs[attr]);
+    schema.attr(attr, attrs[attr]);
   }
 
   return schema;
@@ -47,34 +47,44 @@ function Schema(attrs) {
 /**
  * Add an attribute
  *
- * @param {String} key
+ * @param {String} attr
+ * @param {Rube} rube (optional)
  */
 
-Schema.prototype.key = function(key, rube) {
-  if (rube) {
+Schema.prototype.attr = function(key, rube) {
+  if (!key) {
+    return this._attrs;
+  } else if ('object' == typeof key) {
+    this._attrs = extend(this._attrs, key)
+  } else if (key.name == 'schema') {
+    this._attrs = extend(this._attrs, key._attrs);
+  } else if (rube) {
     this._attrs[key] = rube;
-    return this;
+  } else {
+    var rube = this._attrs[key] = Rube();
+    rube.attr = this.attr.bind(this);
+    return rube;
   }
 
-  return this._attrs[key] = Rube();
+  return this;
 };
 
 /**
  * Validate
  *
  * @param {Object} obj
+ * @param {Object} schema
  * @return {Function} fn
  */
 
-Schema.prototype.validate = function(obj, fn) {
+function validate(obj, schema, fn) {
   var batch = Batch().throws(false);
-  var self = this;
   var errors = {};
   var values = {};
 
   keys(obj).forEach(function(attr) {
     batch.push(function(next) {
-      self._attrs[attr](obj[attr], function(err, v) {
+      schema[attr](obj[attr], function(err, v) {
         if (err) {
           errors[attr] = err;
           return next(err);

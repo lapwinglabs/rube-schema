@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "batch": "^0.5.1",
+    "extend.js": "0.0.1",
     "mocha": "^2.0.1",
-    "rube": "0.x"
+    "rube": "0.x",
+    "step.js": "^2.0.5"
   },
   "devDependencies": {
     "mocha": "*",
