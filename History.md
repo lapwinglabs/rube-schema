@@ -1,4 +1,9 @@
 
+0.1.3 / 2014-12-01
+==================
+
+  * removed backlinking: chaining delegation can be confusing and error prone
+
 0.1.2 / 2014-11-30
 ==================
 
